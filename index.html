@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculation of Gas Volume Correction Factor</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="modal-container">
+      <div class="modal">
+        <div class="message-box">
+          <h2>Please Enter full data</h2>
+          <hr />
+          <br />
+          <p class="message-text"></p>
+        </div>
+        <button class="close-button">Close</button>
+      </div>
+    </div>
+    <main class="container">
+      <header>
+        <nav>
+          <div class="left-part">
+            <p>
+              Arvin Miad
+              <br />
+              <span>Paya</span>
+            </p>
+          </div>
+        </nav>
+      </header>
+      <div class="content">
+        <div class="left-part">
+          <h1 class="title">
+            Calculation of <span>Gas Volume </span> <br />
+            Correction Factor
+          </h1>
+          <form action="" target="#" id="form">
+            <div class="section gp-section">
+              <label for="GP">Gage Pressure(GP):</label>
+              <input
+                type="number"
+                step="any"
+                id="GP"
+                name="GP"
+                placeholder="for example: 250"
+              />
+            </div>
+            <div class="section ap-section">
+              <label for="AP">Atmospher Pressure(AP):</label>
+              <input
+                type="number"
+                step="any"
+                id="AP"
+                name="AP"
+                placeholder="for example: 14.652"
+              />
+            </div>
+            <div class="section gt-section">
+              <label for="GT">Gage Temperature(GT):</label>
+              <input
+                type="number"
+                step="any"
+                id="GT"
+                name="GT"
+                placeholder="for example: 25"
+              />
+            </div>
+            <div class="section co-section">
+              <label for="CO">CO2:</label>
+              <input
+                type="number"
+                id="CO"
+                name="CO"
+                placeholder="for example: 0"
+              />
+            </div>
+            <div class="section n-section">
+              <label for="N2">N2:</label>
+              <input
+                type="number"
+                step="any"
+                id="N2"
+                name="N2"
+                placeholder="for example: 0"
+              />
+            </div>
+            <div class="section grav-section">
+              <label for="grav">Grav:</label>
+              <input
+                type="number"
+                step="any"
+                id="grav"
+                name="grav"
+                placeholder="for example: 0"
+              />
+            </div>
+            <div class="submit-button">
+              <input type="submit" value="Computing" class="button submit" />
+            </div>
+            <div class="reset-button">
+              <input type="reset" value="Reset" class="button reset" />
+            </div>
+          </form>
+        </div>
+        <div class="right-part">
+          <div class="table">
+            <div class="title">
+              Atmospheric pressure and altitude in the cities of<span>
+                Khuzestan province</span
+              >
+            </div>
+            <hr />
+            <table>
+              <thead>
+                <td>City</td>
+                <td>|</td>
+                <td>
+                  Atmospheric
+                  <br />
+                  pressure (PSI)
+                </td>
+                <td>|</td>
+                <td>Height (M)</td>
+                <td>|</td>
+                <td>MBAR</td>
+              </thead>
+              <tr>
+                <td>Bostan</td>
+                <td>|</td>
+                <td>14.642</td>
+                <td>|</td>
+                <td>8</td>
+                <td>|</td>
+                <td>1009.5</td>
+              </tr>
+              <tr>
+                <td>Bandare Emam</td>
+                <td>|</td>
+                <td>14.642</td>
+                <td>|</td>
+                <td>3</td>
+                <td>|</td>
+                <td>1009.5</td>
+              </tr>
+              <tr>
+                <td>Bahbahan</td>
+                <td>|</td>
+                <td>14.148</td>
+                <td>|</td>
+                <td>313</td>
+                <td>|</td>
+                <td>975.5</td>
+              </tr>
+              <tr>
+                <td>Jayzan</td>
+                <td>|</td>
+                <td>14.608</td>
+                <td>|</td>
+                <td>29</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Janat makan</td>
+                <td>|</td>
+                <td>14.437</td>
+                <td>|</td>
+                <td>100</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Chamran</td>
+                <td>|</td>
+                <td>14.637</td>
+                <td>|</td>
+                <td>6</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Horr</td>
+                <td>|</td>
+                <td>14.469</td>
+                <td>|</td>
+                <td>71</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Hosseinieh</td>
+                <td>|</td>
+                <td>14.547</td>
+                <td>|</td>
+                <td>150</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Hamzeh</td>
+                <td>|</td>
+                <td>14.523</td>
+                <td>|</td>
+                <td>143</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Hamidieh</td>
+                <td>|</td>
+                <td>14.597</td>
+                <td>|</td>
+                <td>30</td>
+                <td>|</td>
+                <td>1006.4</td>
+              </tr>
+              <tr>
+                <td>Khoramshahr</td>
+                <td>|</td>
+                <td>14.644</td>
+                <td>|</td>
+                <td>3</td>
+                <td>|</td>
+                <td>1009.7</td>
+              </tr>
+              <tr>
+                <td>Darkhovin</td>
+                <td>|</td>
+                <td>14.639</td>
+                <td>|</td>
+                <td>5</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Dezab</td>
+                <td>|</td>
+                <td>14.523</td>
+                <td>|</td>
+                <td>143</td>
+                <td>|</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Dezful</td>
+                <td>|</td>
+                <td>14.523</td>
+                <td>|</td>
+                <td>143</td>
+                <td>|</td>
+                <td>1001.3</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="js/app.js"></script>
+  </body>
+</html>
