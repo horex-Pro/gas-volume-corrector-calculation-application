@@ -1,6 +1,8 @@
 const form = document.getElementById('form');
 const inputs = document.getElementsByTagName('input');
 const modalContainer = document.querySelector('.modal-container');
+const messageTitle = document.querySelector('.message-title');
+const messageText = document.querySelector('.message-text')
 const closeModalBtn = document.querySelector('.close-button');
 let formData ={};
 let errorMessage;
@@ -36,11 +38,16 @@ form.addEventListener('submit',(e)=>{
     };
 
     if(validationResult(formData)!= true){
-        modalContainer.style.display = 'flex'
+        modalContainer.style.display = 'flex';
         document.querySelector('.message-text').innerText = errorMessage;
+        messageTitle.textContent = 'Please enter full values'
     }
     else{
         processor(formData);
+        form.reset();
+        inputsList.forEach((item , index)=>{
+            item.classList.remove('valid')
+        })
         e.preventDefault();
     }
 
@@ -138,38 +145,44 @@ function processor(obj){
         },
         cz(){
             return this.fpv3()**2;
+        },
+        c(){
+            return this.cp()*this.ct()*this.cz()
         }
     };
-    console.log("ap:" , moreDetail.ap);
-    console.log("tf:",moreDetail.tf);
-    console.log("mc:",moreDetail.mc);
-    console.log("mn:",moreDetail.mn);
-    console.log("fp:",moreDetail.fp());
-    console.log("ft:",moreDetail.ft());
-    console.log("padj:",moreDetail.padj());
-    console.log("tadj:",moreDetail.tadj());
-    console.log("pii:",moreDetail.pii());
-    console.log("tau:",moreDetail.tau());
-    console.log("m:",moreDetail.m());
-    console.log("n:",moreDetail.n());
-    console.log("b2:",moreDetail.b2());
-    console.log("e:",moreDetail.e());
-    console.log("e2:",moreDetail.e2());
-    console.log("b1:",moreDetail.b1());
-    console.log("b11:",moreDetail.b11());
-    console.log("d:",moreDetail.d());
-    console.log("d2:",moreDetail.d2());
-    console.log("fpv:",moreDetail.fpv());
-    console.log("fpv:",moreDetail.fpv2());
-    console.log("fpv:",moreDetail.fpv3());
-    console.log("cp:",moreDetail.cp());
-    console.log("ct:",moreDetail.ct());
-    console.log("cz:",moreDetail.cz());
+    const result = {
+        cp:moreDetail.cp(),
+        ct:moreDetail.ct(),
+        cz:moreDetail.cz(),
+        c:moreDetail.c(),
+    }
 
-
-
-
-
+    renderDataInDOM(result)
 };
+
+function renderDataInDOM(obj){
+    modalContainer.style.display = 'flex';
+    messageTitle.textContent = 'Result :'
+    messageText.innerHTML = `
+    <ul>
+              <li>
+                <div>Pressure coefficient</div>
+                <div>${obj.cp}</div>
+              </li>
+              <li>
+                <div>Temperature coefficient</div>
+                <div>${obj.ct}</div>
+              </li>
+              <li>
+                <div>Density factor</div>
+                <div>${obj.cz}</div>
+              </li>
+              <li>
+                <div>Correction factor</div>
+                <div>${obj.c}</div>
+              </li>
+    </ul>
+    `
+}
 
 
