@@ -29,13 +29,14 @@ inputsList.forEach((item)=>{
 
 form.addEventListener('submit',(e)=>{
     formData = {
-        gagePressure:Number(e.target.GP.value),
-        atmospherPressure:Number(e.target.AP.value),
-        gageTemperature:Number(e.target.GT.value),
+        gagePressure:e.target.GP.value,
+        atmospherPressure:e.target.AP.value,
+        gageTemperature:e.target.GT.value,
         co2:e.target.CO.value,
         n2:e.target.N2.value,
         grav:e.target.grav.value,
     };
+    console.log(formData)
 
     if(validationResult(formData)!= true){
         modalContainer.style.display = 'flex';
@@ -78,6 +79,13 @@ function validationResult(obj){
 }
 
 function processor(obj){
+    obj.gagePressure = Number(obj.gagePressure);
+    obj.atmospherPressure = Number(obj.atmospherPressure);
+    obj.gageTemperature = Number(obj.gageTemperature);
+    obj.co2 = Number(obj.co2);
+    obj.n2 = Number(obj.n2);
+    obj.grav = Number(obj.grav);
+    
     const moreDetail = {
         ap: obj.gagePressure + obj.atmospherPressure,
         tf: obj.gageTemperature * 1.8 + 32,
